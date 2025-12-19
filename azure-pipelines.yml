@@ -1,0 +1,28 @@
+trigger:
+- main
+
+pool:
+  name: assigment_pool
+
+steps:
+- 
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: '42000'
+    backendAzureRmStorageAccountName: 'samarstg'
+    backendAzureRmContainerName: 'amarendra'
+    backendAzureRmKey: 'terraform.tfstate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: '42000'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: '42000'
