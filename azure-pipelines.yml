@@ -1,11 +1,8 @@
 trigger:
 - main
-
 pool:
   name: assigment_pool
-
-steps:
-- 
+steps: 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
